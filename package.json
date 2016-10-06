@@ -1,8 +1,8 @@
 {
     "name": "angular-quickstart",
-    "version": "1.0.0",
+    "version": "0.1.0",
     "scripts": {
-        "start": "tsc && concurrently \"tsc -w\" \"lite-server\" ",
+        "develop": "tsc && concurrently \"tsc -w\" \"lite-server\" ",
         "lite": "lite-server",
         "postinstall": "typings install",
         "tsc": "tsc",
@@ -10,9 +10,9 @@
         "typings": "typings",
         "ngc": "./node_modules/.bin/ngc -p ./tsconfig-aot.json",
         "rollup": "./node_modules/.bin/rollup -c ./rollup.js",
-        "build": "ngc && rollup"
+        "prestart": "./node_modules/.bin/ngc -p ./tsconfig-aot.json && ./node_modules/.bin/rollup -c ./rollup.js",
+        "start": "node app.js"
     },
-    "license": "ISC",
     "dependencies": {
         "@angular/common": "~2.0.1",
         "@angular/compiler": "~2.0.1",
@@ -27,7 +27,9 @@
         "@angular/upgrade": "~2.0.1",
         "angular-in-memory-web-api": "~0.1.1",
         "bootstrap": "^3.3.7",
+        "compression": "^1.6.2",
         "core-js": "^2.4.1",
+        "express": "^4.14.0",
         "reflect-metadata": "^0.1.8",
         "rxjs": "5.0.0-beta.12",
         "systemjs": "0.19.39",
@@ -42,5 +44,8 @@
         "rollup-plugin-uglify": "^1.0.1",
         "typescript": "^2.0.3",
         "typings": "^1.4.0"
+    },
+    "engines": {
+        "node": "6.7.0"
     }
 }
