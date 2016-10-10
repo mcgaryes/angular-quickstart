@@ -3,10 +3,10 @@
     "version": "0.1.0",
     "scripts": {
         "build": "ngc -p tsconfig-prod.json && rollup -c rollup.js",
-        "develop": "tsc && concurrently \"tsc -w\" \"lite-server\" ",
+        "develop": "tsc && concurrently \"tsc -w\" \"node app.js\" \"browser-sync start --config='config/browser-sync.js'\"",
         "preinstall": "typings install",
         "prestart": "npm run build",
-        "start": "node app.js",
+        "start": "NODE_ENV=production node app.js",
         "typings": "typings"
     },
     "dependencies": {
@@ -25,21 +25,22 @@
         "bootstrap": "^3.3.7",
         "compression": "^1.6.2",
         "core-js": "^2.4.1",
+        "ejs": "^2.5.2",
         "express": "^4.14.0",
         "reflect-metadata": "^0.1.8",
-        "rxjs": "5.0.0-beta.12",
-        "systemjs": "0.19.39",
-        "zone.js": "^0.6.25",
         "rollup": "^0.36.1",
         "rollup-plugin-commonjs": "^5.0.4",
         "rollup-plugin-node-resolve": "^2.0.0",
         "rollup-plugin-uglify": "^1.0.1",
+        "rxjs": "5.0.0-beta.12",
+        "systemjs": "0.19.39",
         "typescript": "^2.0.3",
-        "typings": "^1.4.0"
+        "typings": "^1.4.0",
+        "zone.js": "^0.6.25"
     },
     "devDependencies": {
-        "concurrently": "^3.0.0",
-        "lite-server": "^2.2.2"
+        "browser-sync": "^2.17.2",
+        "concurrently": "^3.0.0"
     },
     "engines": {
         "node": "6.7.0"

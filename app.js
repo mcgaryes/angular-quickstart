@@ -7,12 +7,16 @@ const compression = require('compression');
 
 const PORT = process.env.PORT || '8888';
 
+app.set('view engine', 'ejs');
+
 app.use(compression());
 app.use(express.static('./node_modules'));
 app.use(express.static('./dist'));
+app.use(express.static('./'));
+
 
 app.all('/', (req, res) => {
-    fs.createReadStream('index-aot.html').pipe(res);
+    res.render('index');
 });
 
 app.listen(PORT, () => {
